@@ -1,36 +1,40 @@
-<h1>Listing ads</h1>
-
-<table>
+<%- model_class = Ad -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Ad %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Titel</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Price type</th>
-      <th>Postal code</th>
-      <th>Place</th>
-      <th>Street</th>
-      <th>Ad type</th>
-      <th>Contact name</th>
-      <th>Phonenumber</th>
-      <th>In galery</th>
-      <th>Galery end</th>
-      <th>Top ad</th>
-      <th>Top ad end</th>
-      <th>Highlight</th>
-      <th>Highlight end</th>
-      <th>Repeat to top</th>
-      <th>Repeat to top end</th>
-      <th>Main image</th>
-      <th>Category</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:titel) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:price_type) %></th>
+      <th><%= model_class.human_attribute_name(:postal_code) %></th>
+      <th><%= model_class.human_attribute_name(:place_id) %></th>
+      <th><%= model_class.human_attribute_name(:street) %></th>
+      <th><%= model_class.human_attribute_name(:ad_type) %></th>
+      <th><%= model_class.human_attribute_name(:contact_name) %></th>
+      <th><%= model_class.human_attribute_name(:phonenumber) %></th>
+      <th><%= model_class.human_attribute_name(:in_galery) %></th>
+      <th><%= model_class.human_attribute_name(:galery_end) %></th>
+      <th><%= model_class.human_attribute_name(:top_ad) %></th>
+      <th><%= model_class.human_attribute_name(:top_ad_end) %></th>
+      <th><%= model_class.human_attribute_name(:highlight) %></th>
+      <th><%= model_class.human_attribute_name(:highlight_end) %></th>
+      <th><%= model_class.human_attribute_name(:repeat_to_top) %></th>
+      <th><%= model_class.human_attribute_name(:repeat_to_top_end) %></th>
+      <th><%= model_class.human_attribute_name(:main_image) %></th>
+      <th><%= model_class.human_attribute_name(:category_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @ads.each do |ad| %>
       <tr>
+        <td><%= ad.id %></td>
         <td><%= ad.user_id %></td>
         <td><%= ad.titel %></td>
         <td><%= ad.description %></td>
@@ -52,14 +56,21 @@
         <td><%= ad.repeat_to_top_end %></td>
         <td><%= ad.main_image %></td>
         <td><%= ad.category_id %></td>
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l ad.created_at, format: :long %></td>
+        <td>
+          <%= link_to ad_path(ad), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to ad_path(ad), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Ad', new_ad_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_ad_path,
+            :class => 'btn btn-primary' %>

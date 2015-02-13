@@ -1,109 +1,64 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Ad -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Ad %></h1>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @ad.user_id %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:user_id) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.user_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:titel) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.titel %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:price) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.price %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:price_type) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.price_type %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:postal_code) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.postal_code %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:place_id) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.place_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:street) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.street %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ad_type) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.ad_type %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:contact_name) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.contact_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:phonenumber) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.phonenumber %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:in_galery) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.in_galery %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:galery_end) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.galery_end %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:top_ad) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.top_ad %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:top_ad_end) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.top_ad_end %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:highlight) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.highlight %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:highlight_end) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.highlight_end %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:repeat_to_top) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.repeat_to_top %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:repeat_to_top_end) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.repeat_to_top_end %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:main_image) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.main_image %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:category_id) %></dt>
+      <dd><pre class="prettyprint"><%= @ad.category_id %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Titel:</strong>
-  <%= @ad.titel %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              ads_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ad_path(@ad), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              ad_path(@ad),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ad.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @ad.price %>
-</p>
-
-<p>
-  <strong>Price type:</strong>
-  <%= @ad.price_type %>
-</p>
-
-<p>
-  <strong>Postal code:</strong>
-  <%= @ad.postal_code %>
-</p>
-
-<p>
-  <strong>Place:</strong>
-  <%= @ad.place_id %>
-</p>
-
-<p>
-  <strong>Street:</strong>
-  <%= @ad.street %>
-</p>
-
-<p>
-  <strong>Ad type:</strong>
-  <%= @ad.ad_type %>
-</p>
-
-<p>
-  <strong>Contact name:</strong>
-  <%= @ad.contact_name %>
-</p>
-
-<p>
-  <strong>Phonenumber:</strong>
-  <%= @ad.phonenumber %>
-</p>
-
-<p>
-  <strong>In galery:</strong>
-  <%= @ad.in_galery %>
-</p>
-
-<p>
-  <strong>Galery end:</strong>
-  <%= @ad.galery_end %>
-</p>
-
-<p>
-  <strong>Top ad:</strong>
-  <%= @ad.top_ad %>
-</p>
-
-<p>
-  <strong>Top ad end:</strong>
-  <%= @ad.top_ad_end %>
-</p>
-
-<p>
-  <strong>Highlight:</strong>
-  <%= @ad.highlight %>
-</p>
-
-<p>
-  <strong>Highlight end:</strong>
-  <%= @ad.highlight_end %>
-</p>
-
-<p>
-  <strong>Repeat to top:</strong>
-  <%= @ad.repeat_to_top %>
-</p>
-
-<p>
-  <strong>Repeat to top end:</strong>
-  <%= @ad.repeat_to_top_end %>
-</p>
-
-<p>
-  <strong>Main image:</strong>
-  <%= @ad.main_image %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @ad.category_id %>
-</p>
-
-<%= link_to 'Edit', edit_ad_path(@ad) %> |
-<%= link_to 'Back', ads_path %>
