@@ -1,0 +1,65 @@
+<h1>Listing ads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Titel</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Price type</th>
+      <th>Postal code</th>
+      <th>Place</th>
+      <th>Street</th>
+      <th>Ad type</th>
+      <th>Contact name</th>
+      <th>Phonenumber</th>
+      <th>In galery</th>
+      <th>Galery end</th>
+      <th>Top ad</th>
+      <th>Top ad end</th>
+      <th>Highlight</th>
+      <th>Highlight end</th>
+      <th>Repeat to top</th>
+      <th>Repeat to top end</th>
+      <th>Main image</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ads.each do |ad| %>
+      <tr>
+        <td><%= ad.user_id %></td>
+        <td><%= ad.titel %></td>
+        <td><%= ad.description %></td>
+        <td><%= ad.price %></td>
+        <td><%= ad.price_type %></td>
+        <td><%= ad.postal_code %></td>
+        <td><%= ad.place_id %></td>
+        <td><%= ad.street %></td>
+        <td><%= ad.ad_type %></td>
+        <td><%= ad.contact_name %></td>
+        <td><%= ad.phonenumber %></td>
+        <td><%= ad.in_galery %></td>
+        <td><%= ad.galery_end %></td>
+        <td><%= ad.top_ad %></td>
+        <td><%= ad.top_ad_end %></td>
+        <td><%= ad.highlight %></td>
+        <td><%= ad.highlight_end %></td>
+        <td><%= ad.repeat_to_top %></td>
+        <td><%= ad.repeat_to_top_end %></td>
+        <td><%= ad.main_image %></td>
+        <td><%= ad.category_id %></td>
+        <td><%= link_to 'Show', ad %></td>
+        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
+        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ad', new_ad_path %>
