@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :set_ad, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /ads
   # GET /ads.json
